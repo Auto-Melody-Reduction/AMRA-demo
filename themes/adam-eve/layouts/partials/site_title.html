@@ -1,0 +1,15 @@
+<!-- <div id="site_cover" style="background-image: url('music.jpg'); background-size: auto; background-position: center;"> -->
+
+<h1 id="site_title">{{ .Site.Title }}</h1>
+{{ if isset .Site.Params "description" }}
+  <p>{{ .Site.Params.description }}</p>
+{{ end }}
+
+<!-- Either nohomebar parameter is defined to false or is missing -->
+{{ if and (isset .Site.Params "nohomebar") (eq $.Site.Params.nohomebar true) }}
+<!-- so no homepage menu bar -->
+{{ else }}
+{{ partial "menu.html" . }}
+{{ end }}
+
+<!-- </div> -->

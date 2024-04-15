@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+<!-- <script src="https://kit.fontawesome.com/f1bb87e67a.js" crossorigin="anonymous"></script> -->
+<!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet"> -->
+
+
+<head>
+  {{ partial "header.html" . }}
+</head>
+
+<body>
+  <header style="text-align: center;">
+    {{ partial "site_title.html" . }}
+  <!-- <hr /> -->
+  </header>
+
+  
+
+  <main>
+  {{ .Content }}
+  {{ $pages := where .Site.RegularPages "Type" "post" }}
+  {{ if isset .Site.Params "nohomepagepostlist" }}
+  <!-- No homepage post list -->
+  {{ else if ne (len $pages) 0 }}
+    <h1>Posts</h1>
+    <ul>
+    {{ range $pages.ByTitle }}
+    <li><a href="{{ .Permalink }}">{{ .Name }}</a></li>
+    {{ end }}
+    </ul>
+  {{ end }}
+  </main>
+  <footer>
+    <hr />
+    {{ partial "footer.html" . }}
+  </footer>
+</body>
+</html>

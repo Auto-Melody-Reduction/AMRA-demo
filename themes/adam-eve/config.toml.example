@@ -1,0 +1,34 @@
+baseURL = "https://example.org"
+theme = "hugo_theme_adam_eve"
+DefaultContentLanguage = "en"
+# Enable Emoji, regarding https://www.webfx.com/tools/emoji-cheat-sheet/
+enableEmoji = true
+
+[module]
+  [module.hugoVersion]
+    extended = true
+    min = "0.105.0"
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
+[Languages]
+[Languages.fr]
+languageCode = "fr"
+title = "Recueil d'astuces"
+
+[Languages.en]
+languageCode = "en"
+title = "Tip and tricks"
+
+[Languages.fr.params]
+description = "Wiki de partage de connaissances"
+
+[Languages.en.params]
+description = "Sharing knowledge wiki"
+
+[markup]
+  [markup.tableOfContents]
+    endLevel = 6
+    ordered = false
+    startLevel = 1
