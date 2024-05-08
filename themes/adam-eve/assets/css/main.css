@@ -323,6 +323,25 @@ midi-visualizer svg rect.note {
   border: 1px solid #000; /* Black border for better visibility */
 }
 
+.center-stuff {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding-bottom: 20px;
+}
+
+.btn {
+  background-color: #cde;
+  color: black;
+  padding: 8px;
+  margin: 10px;
+  font-size: 14px;
+  /* border: 2px solid black; */
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
 
 midi-visualizer .piano-roll-visualizer svg {
   background: linear-gradient(90deg, #aaa 1px, transparent 0px 55px, rgba(170, 170, 170, 0.3333333333) 56px, transparent 56px 110px, rgba(170, 170, 170, 0.3333333333) 111px, transparent 111px 165px, rgba(170, 170, 170, 0.3333333333) 166px, transparent 166px) left/220px repeat;
@@ -381,4 +400,41 @@ midi-visualizer svg rect.note.active {
 audio {
   width : 100%;
   height: 36px;
+}
+
+
+html {
+  font-family: sans-serif;
+}
+
+table {
+  border-collapse: collapse;
+  border: 2px solid rgb(200,200,200);
+  letter-spacing: 1px;
+  font-size: 0.8rem;
+}
+
+td, th {
+  border: 1px solid rgb(190,190,190);
+  padding: 10px 20px;
+}
+
+th {
+  background-color: rgb(235,235,235);
+}
+
+td {
+  text-align: center;
+}
+
+tr:nth-child(even) td {
+  background-color: rgb(250,250,250);
+}
+
+tr:nth-child(odd) td {
+  background-color: rgb(245,245,245);
+}
+
+caption {
+  padding: 10px;
 }
