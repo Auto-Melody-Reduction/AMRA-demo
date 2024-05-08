@@ -629,7 +629,7 @@ To evaluate the effectiveness of the melody reduction for downstream music gener
         Original Melody <button id="togglePianorollVarOrg_1" class="btn">Show Piano Roll</button>
     </th>
     <th style="background-color: cornsilk; color: black; width: 50%">
-        Ours <button id="togglePianorollVarOurs_1" class="btn">Show Piano Roll</button>
+        Ours + Diff. <button id="togglePianorollVarOurs_1" class="btn">Show Piano Roll</button>
     </th>
   </tr>
   <tr>
@@ -647,10 +647,10 @@ To evaluate the effectiveness of the melody reduction for downstream music gener
 
   <tr>
     <th style="background-color: cornsilk; color: black; width: 50%">
-        Baseline: DS-OBS <button id="togglePianorollVarDSOBS_1" class="btn">Show Piano Roll</button>
+        Baseline: DS-OBS + Diff. <button id="togglePianorollVarDSOBS_1" class="btn">Show Piano Roll</button>
     </th>
     <th style="background-color: cornsilk; color: black; width: 50%">
-        Baseline: DS-LS  <button id="togglePianorollVarEC2VAE_1" class="btn">Show Piano Roll</button>
+        Baseline: EC2-VAE Sampling  <button id="togglePianorollVarEC2VAE_1" class="btn">Show Piano Roll</button>
     </th>
   </tr>
   <tr>
@@ -692,7 +692,7 @@ To evaluate the effectiveness of the melody reduction for downstream music gener
         </midi-visualizer>
     </section>
 
-- Ours + Diff.
+- Ours + Diff. + Diff.
     <section class="vis type2">
         <audio id="audio-2-ours" controls controlsList="nodownload" preload="none">
             <source src="melody_variation_samples/chorus2-ours-120.mp3">
@@ -701,7 +701,7 @@ To evaluate the effectiveness of the melody reduction for downstream music gener
         </midi-visualizer>
     </section>
 
-- Baseline: DS-OBS + Diff.
+- Baseline: DS-OBS + Diff. + Diff.
     <section class="vis type3">
         <audio id="audio-2-ds" controls controlsList="nodownload" preload="none">
             <source src="melody_variation_samples/chorus2-ds-120.mp3">
@@ -726,7 +726,7 @@ To evaluate the effectiveness of the melody reduction for downstream music gener
         Original Melody <button id="togglePianorollVarOrg_2" class="btn">Show Piano Roll</button>
     </th>
     <th style="background-color: cornsilk; color: black; width: 50%">
-        Ours <button id="togglePianorollVarOurs_2" class="btn">Show Piano Roll</button>
+        Ours + Diff. <button id="togglePianorollVarOurs_2" class="btn">Show Piano Roll</button>
     </th>
   </tr>
   <tr>
@@ -744,10 +744,10 @@ To evaluate the effectiveness of the melody reduction for downstream music gener
 
   <tr>
     <th style="background-color: cornsilk; color: black; width: 50%">
-        Baseline: DS-OBS <button id="togglePianorollVarDSOBS_2" class="btn">Show Piano Roll</button>
+        Baseline: DS-OBS + Diff. <button id="togglePianorollVarDSOBS_2" class="btn">Show Piano Roll</button>
     </th>
     <th style="background-color: cornsilk; color: black; width: 50%">
-        Baseline: DS-LS  <button id="togglePianorollVarEC2VAE_2" class="btn">Show Piano Roll</button>
+        Baseline: EC2-VAE Sampling  <button id="togglePianorollVarEC2VAE_2" class="btn">Show Piano Roll</button>
     </th>
   </tr>
   <tr>
@@ -787,7 +787,7 @@ To evaluate the effectiveness of the melody reduction for downstream music gener
         Original Melody <button id="togglePianorollVarOrg_3" class="btn">Show Piano Roll</button>
     </th>
     <th style="background-color: cornsilk; color: black; width: 50%">
-        Ours <button id="togglePianorollVarOurs_3" class="btn">Show Piano Roll</button>
+        Ours + Diff. <button id="togglePianorollVarOurs_3" class="btn">Show Piano Roll</button>
     </th>
   </tr>
   <tr>
@@ -805,10 +805,10 @@ To evaluate the effectiveness of the melody reduction for downstream music gener
 
   <tr>
     <th style="background-color: cornsilk; color: black; width: 50%">
-        Baseline: DS-OBS <button id="togglePianorollVarDSOBS_3" class="btn">Show Piano Roll</button>
+        Baseline: DS-OBS + Diff. <button id="togglePianorollVarDSOBS_3" class="btn">Show Piano Roll</button>
     </th>
     <th style="background-color: cornsilk; color: black; width: 50%">
-        Baseline: DS-LS  <button id="togglePianorollVarEC2VAE_3" class="btn">Show Piano Roll</button>
+        Baseline: EC2-VAE Sampling  <button id="togglePianorollVarEC2VAE_3" class="btn">Show Piano Roll</button>
     </th>
   </tr>
   <tr>
@@ -846,10 +846,10 @@ To evaluate the effectiveness of the melody reduction for downstream music gener
 <table>
   <tr>
     <th style="background-color: cornsilk; color: black; width: 50%">
-        Original Melody <button id="togglePianorollVarOrg_4" class="btn">Show Piano Roll</button>
+        Original Melody <button id="togglePianorollVarOrg_3" class="btn">Show Piano Roll</button>
     </th>
     <th style="background-color: cornsilk; color: black; width: 50%">
-        Ours <button id="togglePianorollVarOurs_4" class="btn">Show Piano Roll</button>
+        Ours + Diff. <button id="togglePianorollVarOurs_3" class="btn">Show Piano Roll</button>
     </th>
   </tr>
   <tr>
@@ -867,10 +867,10 @@ To evaluate the effectiveness of the melody reduction for downstream music gener
 
   <tr>
     <th style="background-color: cornsilk; color: black; width: 50%">
-        Baseline: DS-OBS <button id="togglePianorollVarDSOBS_4" class="btn">Show Piano Roll</button>
+        Baseline: DS-OBS + Diff. <button id="togglePianorollVarDSOBS_3" class="btn">Show Piano Roll</button>
     </th>
     <th style="background-color: cornsilk; color: black; width: 50%">
-        Baseline: DS-LS  <button id="togglePianorollVarEC2VAE_4" class="btn">Show Piano Roll</button>
+        Baseline: EC2-VAE Sampling  <button id="togglePianorollVarEC2VAE_3" class="btn">Show Piano Roll</button>
     </th>
   </tr>
   <tr>
@@ -886,19 +886,19 @@ To evaluate the effectiveness of the melody reduction for downstream music gener
     </td>
   </tr>
 </table>
-<section id="unfoldPianorollVarOrg_4" class="vis type1" style="display: none">
+<section id="unfoldPianorollVarOrg_3" class="vis type1" style="display: none">
     <midi-visualizer src="melody_variation_samples/chorus1-gt.mid" type="piano-roll" style="position: relative"> 
     </midi-visualizer>
 </section>
-<section id="unfoldPianorollVarOurs_4" class="vis type2" style="display: none">
+<section id="unfoldPianorollVarOurs_3" class="vis type2" style="display: none">
     <midi-visualizer src="melody_variation_samples/chorus1-ours.mid" type="piano-roll" style="position: relative"> 
     </midi-visualizer>
 </section>
-<section id="unfoldPianorollVarDSOBS_4" class="vis type3" style="display: none">
+<section id="unfoldPianorollVarDSOBS_3" class="vis type3" style="display: none">
     <midi-visualizer src="melody_variation_samples/chorus1-ds.mid" type="piano-roll" style="position: relative"> 
     </midi-visualizer>
 </section>
-<section id="unfoldPianorollVarEC2VAE_4" class="vis type3" style="display: none">
+<section id="unfoldPianorollVarEC2VAE_3" class="vis type3" style="display: none">
     <midi-visualizer src="melody_variation_samples/chorus1-ec2.mid" type="piano-roll" style="position: relative"> 
     </midi-visualizer>
 </section>
