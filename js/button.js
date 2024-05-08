@@ -404,3 +404,101 @@ togglePianorollVarEC2VAE_2.addEventListener('click', function () {
         ButtonOff(togglePianorollVarEC2VAE_2, unfoldPianorollVarEC2VAE_2)
     }
 });
+
+const togglePianorollVarOrg_3 = document.getElementById('togglePianorollVarOrg_3');
+const unfoldPianorollVarOrg_3 = document.getElementById('unfoldPianorollVarOrg_3');
+togglePianorollVarOrg_3.addEventListener('click', function () {
+    if (unfoldPianorollVarOrg_3.style.display === 'none' || unfoldPianorollVarOrg_3.style.display === '') {
+        ButtonOn(togglePianorollVarOrg_3, unfoldPianorollVarOrg_3)
+        ButtonOff(togglePianorollVarOurs_3, unfoldPianorollVarOurs_3)
+        ButtonOff(togglePianorollVarDSOBS_3, unfoldPianorollVarDSOBS_3)
+        ButtonOff(togglePianorollVarEC2VAE_3, unfoldPianorollVarEC2VAE_3)
+    } else {
+        ButtonOff(togglePianorollVarOrg_3, unfoldPianorollVarOrg_3)
+    }
+});
+const togglePianorollVarOurs_3 = document.getElementById('togglePianorollVarOurs_3');
+const unfoldPianorollVarOurs_3 = document.getElementById('unfoldPianorollVarOurs_3');
+togglePianorollVarOurs_3.addEventListener('click', function () {
+    if (unfoldPianorollVarOurs_3.style.display === 'none' || unfoldPianorollVarOurs_3.style.display === '') {
+        ButtonOn(togglePianorollVarOurs_3, unfoldPianorollVarOurs_3)
+        ButtonOff(togglePianorollVarOrg_3, unfoldPianorollVarOrg_3)
+        ButtonOff(togglePianorollVarDSOBS_3, unfoldPianorollVarDSOBS_3)
+        ButtonOff(togglePianorollVarEC2VAE_3, unfoldPianorollVarEC2VAE_3)
+    } else {
+        ButtonOff(togglePianorollVarOurs_3, unfoldPianorollVarOurs_3)
+    }
+});
+const togglePianorollVarDSOBS_3 = document.getElementById('togglePianorollVarDSOBS_3');
+const unfoldPianorollVarDSOBS_3 = document.getElementById('unfoldPianorollVarDSOBS_3');
+togglePianorollVarDSOBS_3.addEventListener('click', function () {
+    if (unfoldPianorollVarDSOBS_3.style.display === 'none' || unfoldPianorollVarDSOBS_3.style.display === '') {
+        ButtonOn(togglePianorollVarDSOBS_3, unfoldPianorollVarDSOBS_3)
+        ButtonOff(togglePianorollVarOrg_3, unfoldPianorollVarOrg_3)
+        ButtonOff(togglePianorollVarOurs_3, unfoldPianorollVarOurs_3)
+        ButtonOff(togglePianorollVarEC2VAE_3, unfoldPianorollVarEC2VAE_3)
+    } else {
+        ButtonOff(togglePianorollVarDSOBS_3, unfoldPianorollVarDSOBS_3)
+    }
+});
+const togglePianorollVarEC2VAE_3 = document.getElementById('togglePianorollVarEC2VAE_3');
+const unfoldPianorollVarEC2VAE_3 = document.getElementById('unfoldPianorollVarEC2VAE_3');
+togglePianorollVarEC2VAE_3.addEventListener('click', function () {
+    if (unfoldPianorollVarEC2VAE_3.style.display === 'none' || unfoldPianorollVarEC2VAE_3.style.display === '') {
+        ButtonOn(togglePianorollVarEC2VAE_3, unfoldPianorollVarEC2VAE_3)
+        ButtonOff(togglePianorollVarOrg_3, unfoldPianorollVarOrg_3)
+        ButtonOff(togglePianorollVarOurs_3, unfoldPianorollVarOurs_3)
+        ButtonOff(togglePianorollVarDSOBS_3, unfoldPianorollVarDSOBS_3)
+    } else {
+        ButtonOff(togglePianorollVarEC2VAE_3, unfoldPianorollVarEC2VAE_3)
+    }
+});
+
+const togglePianorollVarOrg_4 = document.getElementById('togglePianorollVarOrg_4');
+const unfoldPianorollVarOrg_4 = document.getElementById('unfoldPianorollVarOrg_4');
+togglePianorollVarOrg_4.addEventListener('click', function () {
+    if (unfoldPianorollVarOrg_4.style.display === 'none' || unfoldPianorollVarOrg_4.style.display === '') {
+        ButtonOn(togglePianorollVarOrg_4, unfoldPianorollVarOrg_4)
+        ButtonOff(togglePianorollVarOurs_4, unfoldPianorollVarOurs_4)
+        ButtonOff(togglePianorollVarDSOBS_4, unfoldPianorollVarDSOBS_4)
+        ButtonOff(togglePianorollVarEC2VAE_4, unfoldPianorollVarEC2VAE_4)
+    } else {
+        ButtonOff(togglePianorollVarOrg_4, unfoldPianorollVarOrg_4)
+    }
+});
+const togglePianorollVarOurs_4 = document.getElementById('togglePianorollVarOurs_4');
+const unfoldPianorollVarOurs_4 = document.getElementById('unfoldPianorollVarOurs_4');
+togglePianorollVarOurs_4.addEventListener('click', function () {
+    if (unfoldPianorollVarOurs_4.style.display === 'none' || unfoldPianorollVarOurs_4.style.display === '') {
+        ButtonOn(togglePianorollVarOurs_4, unfoldPianorollVarOurs_4)
+        ButtonOff(togglePianorollVarOrg_4, unfoldPianorollVarOrg_4)
+        ButtonOff(togglePianorollVarDSOBS_4, unfoldPianorollVarDSOBS_4)
+        ButtonOff(togglePianorollVarEC2VAE_4, unfoldPianorollVarEC2VAE_4)
+    } else {
+        ButtonOff(togglePianorollVarOurs_4, unfoldPianorollVarOurs_4)
+    }
+});
+const togglePianorollVarDSOBS_4 = document.getElementById('togglePianorollVarDSOBS_4');
+const unfoldPianorollVarDSOBS_4 = document.getElementById('unfoldPianorollVarDSOBS_4');
+togglePianorollVarDSOBS_4.addEventListener('click', function () {
+    if (unfoldPianorollVarDSOBS_4.style.display === 'none' || unfoldPianorollVarDSOBS_4.style.display === '') {
+        ButtonOn(togglePianorollVarDSOBS_4, unfoldPianorollVarDSOBS_4)
+        ButtonOff(togglePianorollVarOrg_4, unfoldPianorollVarOrg_4)
+        ButtonOff(togglePianorollVarOurs_4, unfoldPianorollVarOurs_4)
+        ButtonOff(togglePianorollVarEC2VAE_4, unfoldPianorollVarEC2VAE_4)
+    } else {
+        ButtonOff(togglePianorollVarDSOBS_4, unfoldPianorollVarDSOBS_4)
+    }
+});
+const togglePianorollVarEC2VAE_4 = document.getElementById('togglePianorollVarEC2VAE_4');
+const unfoldPianorollVarEC2VAE_4 = document.getElementById('unfoldPianorollVarEC2VAE_4');
+togglePianorollVarEC2VAE_4.addEventListener('click', function () {
+    if (unfoldPianorollVarEC2VAE_4.style.display === 'none' || unfoldPianorollVarEC2VAE_4.style.display === '') {
+        ButtonOn(togglePianorollVarEC2VAE_4, unfoldPianorollVarEC2VAE_4)
+        ButtonOff(togglePianorollVarOrg_4, unfoldPianorollVarOrg_4)
+        ButtonOff(togglePianorollVarOurs_4, unfoldPianorollVarOurs_4)
+        ButtonOff(togglePianorollVarDSOBS_4, unfoldPianorollVarDSOBS_4)
+    } else {
+        ButtonOff(togglePianorollVarEC2VAE_4, unfoldPianorollVarEC2VAE_4)
+    }
+});
