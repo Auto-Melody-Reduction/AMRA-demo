@@ -10,7 +10,7 @@
   <meta name="generator" content="Hugo 0.80.0" />
   <title> &middot; Automatic Melody Reduction via Shortest Path Finding</title>
   
-  <link rel="stylesheet" type="text/css" href="/AMRA-demo/main.min.d4b9c625252f00bf6302c8d582eaadc8d9bad4691fc388d6230be4f684d4fbb5.css" integrity="sha256-1LnGJSUvAL9jAsjVguqtyNm61Gkfw4jWIwvk9oTU&#43;7U=" media="screen" title="default">
+  <link rel="stylesheet" type="text/css" href="/AMRA-demo/main.min.cb7654c49b446942ffd4df59a82f3ddb504233fcd45b59d5a0c9aab29d1b9385.css" integrity="sha256-y3ZUxJtEaUL/1N9ZqC8921BCM/zUW1nVoMmqsp0bk4U=" media="screen" title="default">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
 
 </head>
@@ -83,7 +83,6 @@
   <script src="https://cdn.jsdelivr.net/combine/npm/tone@14.7.58,npm/@magenta/music@1.23.1/es6/core.js,npm/focus-visible@5,npm/html-midi-player@1.5.0"></script>
 <script src="https://cdn.jsdelivr.net/npm/midi-player-js/dist/MidiPlayer.min.js"></script>
 <script src="https://unpkg.com/wavesurfer.js"></script>
-<script src="js/midi-audio.js"></script>
 <div style="text-align: justify;">
 <!-- # Automatic Melody Reduction via Shortest Path Finding -->
 <h2 id="abstract">Abstract</h2>
@@ -92,361 +91,738 @@
 <p><a id="reduction"></a></p>
 <p>Here we show some melody reduction samples of pop, folk and classical genres. We compare to two baselines as mentioned in paper: DS-OBS and DS-LS.</p>
 <h3 id="melody-1-pop-genre">Melody 1 (Pop Genre)</h3>
-<ul>
-<li>
-<p>Original Melody</p>
-  <section class="vis type1">
-      <audio controls controlsList="nodownload" preload="none">
-          <source src="melody_variation_samples/pop1-org-120.mp3">
-      </audio>
-      <midi-visualizer src="melody_variation_samples/pop1-org-120.mid" type="piano-roll" style="position: relative"> 
-      </midi-visualizer>
-  </section>
-</li>
-<li>
-<p>Ours</p>
-  <section class="vis type2">
-      <audio id="audio-2-ours" controls controlsList="nodownload" preload="none">
-          <source src="melody_variation_samples/pop1-ours-120.mp3">
-      </audio>
-      <midi-visualizer src="melody_variation_samples/pop1-ours-120.mid" type="piano-roll" id="Vis-2" style="position: relative"> 
-      </midi-visualizer>
-  </section>
-</li>
-<li>
-<p>Baseline: DS-OBS</p>
-  <section class="vis type3">
-      <audio id="audio-2-ds" controls controlsList="nodownload" preload="none">
-          <source src="melody_variation_samples/pop1-dsobs-120.mp3">
-      </audio>
-      <midi-visualizer src="melody_variation_samples/pop1-dsobs-120.mid" type="piano-roll" id="Vis-2" style="position: relative"> 
-      </midi-visualizer>
-  </section>
-</li>
-<li>
-<p>Baseline: DS-LS</p>
-  <section class="vis type3">
-      <audio id="audio-2-ec2" controls controlsList="nodownload" preload="none">
-          <source src="melody_variation_samples/pop1-dsls-120.mp3">
-      </audio>
-      <midi-visualizer src="melody_variation_samples/pop1-dsls-120.mid" type="piano-roll" id="Vis-2" style="position: relative"> 
-      </midi-visualizer>
-  </section> 
-</li>
-</ul>
+<table>
+  <tr>
+    <th style="background-color: lavender; color: black; width: 50%">
+        Original Melody <button id="togglePianorollRedOrg_1" class="btn">Show Piano Roll</button>
+    </th>
+    <th style="background-color: lavender; color: black; width: 50%">
+        Ours <button id="togglePianorollRedOurs_1" class="btn">Show Piano Roll</button>
+    </th>
+  </tr>
+  <tr>
+    <td>
+        <audio controls controlsList="nodownload" preload="none">
+            <source src="melody_variation_samples/pop1-org-120.mp3">
+        </audio>
+    </td>
+    <td>
+        <audio id="audio-2-ours" controls controlsList="nodownload" preload="none">
+            <source src="melody_variation_samples/pop1-ours-120.mp3">
+        </audio>
+    </td>
+  </tr>
+  <tr>
+    <th style="background-color: lavender; color: black; width: 50%">
+        Baseline: DS-OBS <button id="togglePianorollRedDSOBS_1" class="btn">Show Piano Roll</button>
+    </th>
+    <th style="background-color: lavender; color: black; width: 50%">
+        Baseline: DS-LS  <button id="togglePianorollRedDSLS_1" class="btn">Show Piano Roll</button>
+    </th>
+  </tr>
+  <tr>
+    <td>
+        <audio id="audio-2-ds" controls controlsList="nodownload" preload="none">
+            <source src="melody_variation_samples/pop1-dsobs-120.mp3">
+        </audio>
+    </td>
+    <td>
+        <audio id="audio-2-ec2" controls controlsList="nodownload" preload="none">
+            <source src="melody_variation_samples/pop1-dsls-120.mp3">
+        </audio>
+    </td>
+  </tr>
+</table>
+<section id="unfoldPianorollRedOrg_1" class="vis type1" style="display: none">
+    <midi-visualizer src="melody_variation_samples/pop1-org-120.mid" type="piano-roll" style="position: relative"> 
+    </midi-visualizer>
+</section>
+<section id="unfoldPianorollRedOurs_1" class="vis type2" style="display: none">
+    <midi-visualizer src="melody_variation_samples/pop1-ours-120.mid" type="piano-roll" style="position: relative"> 
+    </midi-visualizer>
+</section>
+<section id="unfoldPianorollRedDSOBS_1" class="vis type3" style="display: none">
+    <midi-visualizer src="melody_variation_samples/pop1-dsobs-120.mid" type="piano-roll" style="position: relative"> 
+    </midi-visualizer>
+</section>
+<section id="unfoldPianorollRedDSLS_1" class="vis type3" style="display: none">
+    <midi-visualizer src="melody_variation_samples/pop1-dsls-120.mid" type="piano-roll" style="position: relative"> 
+    </midi-visualizer>
+</section>
+<!-- - Original Melody
+    <section class="vis type1">
+        <audio controls controlsList="nodownload" preload="none">
+            <source src="melody_variation_samples/pop1-org-120.mp3">
+        </audio>
+        <midi-visualizer src="melody_variation_samples/pop1-org-120.mid" type="piano-roll" style="position: relative"> 
+        </midi-visualizer>
+    </section>
+    
+    <div class="center-stuff">
+    <img id="unfoldImage" src="/img/score_annotation.jpeg" style="display: none; width: 90%; margin-bottom: 30px">
+    </div>
+
+- Ours
+    <section class="vis type2">
+        <audio id="audio-2-ours" controls controlsList="nodownload" preload="none">
+            <source src="melody_variation_samples/pop1-ours-120.mp3">
+        </audio>
+        <midi-visualizer src="melody_variation_samples/pop1-ours-120.mid" type="piano-roll" id="Vis-2" style="position: relative"> 
+        </midi-visualizer>
+    </section>
+
+
+- Baseline: DS-OBS
+    <section class="vis type3">
+        <audio id="audio-2-ds" controls controlsList="nodownload" preload="none">
+            <source src="melody_variation_samples/pop1-dsobs-120.mp3">
+        </audio>
+        <midi-visualizer src="melody_variation_samples/pop1-dsobs-120.mid" type="piano-roll" id="Vis-2" style="position: relative"> 
+        </midi-visualizer>
+    </section>
+
+- Baseline: DS-LS
+    <section class="vis type3">
+        <audio id="audio-2-ec2" controls controlsList="nodownload" preload="none">
+            <source src="melody_variation_samples/pop1-dsls-120.mp3">
+        </audio>
+        <midi-visualizer src="melody_variation_samples/pop1-dsls-120.mid" type="piano-roll" id="Vis-2" style="position: relative"> 
+        </midi-visualizer>
+    </section>  -->
 <h3 id="melody-2-pop-genre">Melody 2 (Pop Genre)</h3>
-<ul>
-<li>
-<p>Original Melody</p>
-  <section class="vis type1">
-      <audio controls controlsList="nodownload" preload="none">
-          <source src="melody_variation_samples/pop2-org-120.mp3">
-      </audio>
-      <midi-visualizer src="melody_variation_samples/pop2-org-120.mid" type="piano-roll" style="position: relative"> 
-      </midi-visualizer>
-  </section>
-</li>
-<li>
-<p>Ours</p>
-  <section class="vis type2">
-      <audio id="audio-2-ours" controls controlsList="nodownload" preload="none">
-          <source src="melody_variation_samples/pop2-ours-120.mp3">
-      </audio>
-      <midi-visualizer src="melody_variation_samples/pop2-ours-120.mid" type="piano-roll" id="Vis-2" style="position: relative"> 
-      </midi-visualizer>
-  </section>
-</li>
-<li>
-<p>Baseline: DS-OBS</p>
-  <section class="vis type3">
-      <audio id="audio-2-ds" controls controlsList="nodownload" preload="none">
-          <source src="melody_variation_samples/pop2-dsobs-120.mp3">
-      </audio>
-      <midi-visualizer src="melody_variation_samples/pop2-dsobs-120.mid" type="piano-roll" id="Vis-2" style="position: relative"> 
-      </midi-visualizer>
-  </section>
-</li>
-<li>
-<p>Baseline: DS-LS</p>
-  <section class="vis type3">
-      <audio id="audio-2-ec2" controls controlsList="nodownload" preload="none">
-          <source src="melody_variation_samples/pop2-dsls-120.mp3">
-      </audio>
-      <midi-visualizer src="melody_variation_samples/pop2-dsls-1201.mid" type="piano-roll" id="Vis-2" style="position: relative"> 
-      </midi-visualizer>
-  </section> 
-</li>
-</ul>
+<table>
+  <tr>
+    <th style="background-color: lavender; color: black; width: 50%">
+        Original Melody <button id="togglePianorollRedOrg_2" class="btn">Show Piano Roll</button>
+    </th>
+    <th style="background-color: lavender; color: black; width: 50%">
+        Ours <button id="togglePianorollRedOurs_2" class="btn">Show Piano Roll</button>
+    </th>
+  </tr>
+  <tr>
+    <td>
+        <audio controls controlsList="nodownload" preload="none">
+            <source src="melody_variation_samples/pop2-org-120.mp3">
+        </audio>
+    </td>
+    <td>
+        <audio id="audio-2-ours" controls controlsList="nodownload" preload="none">
+            <source src="melody_variation_samples/pop2-ours-120.mp3">
+        </audio>
+    </td>
+  </tr>
+  <tr>
+    <th style="background-color: lavender; color: black; width: 50%">
+        Baseline: DS-OBS <button id="togglePianorollRedDSOBS_2" class="btn">Show Piano Roll</button>
+    </th>
+    <th style="background-color: lavender; color: black; width: 50%">
+        Baseline: DS-LS  <button id="togglePianorollRedDSLS_2" class="btn">Show Piano Roll</button>
+    </th>
+  </tr>
+  <tr>
+    <td>
+        <audio id="audio-2-ds" controls controlsList="nodownload" preload="none">
+            <source src="melody_variation_samples/pop2-dsobs-120.mp3">
+        </audio>
+    </td>
+    <td>
+        <audio id="audio-2-ec2" controls controlsList="nodownload" preload="none">
+            <source src="melody_variation_samples/pop2-dsls-120.mp3">
+        </audio>
+    </td>
+  </tr>
+</table>
+<section id="unfoldPianorollRedOrg_2" class="vis type1" style="display: none">
+    <midi-visualizer src="melody_variation_samples/pop2-org-120.mid" type="piano-roll" style="position: relative"> 
+    </midi-visualizer>
+</section>
+<section id="unfoldPianorollRedOurs_2" class="vis type2" style="display: none">
+    <midi-visualizer src="melody_variation_samples/pop2-ours-120.mid" type="piano-roll" style="position: relative"> 
+    </midi-visualizer>
+</section>
+<section id="unfoldPianorollRedDSOBS_2" class="vis type3" style="display: none">
+    <midi-visualizer src="melody_variation_samples/pop2-dsobs-120.mid" type="piano-roll" style="position: relative"> 
+    </midi-visualizer>
+</section>
+<section id="unfoldPianorollRedDSLS_2" class="vis type3" style="display: none">
+    <midi-visualizer src="melody_variation_samples/pop2-dsls-120.mid" type="piano-roll" style="position: relative"> 
+    </midi-visualizer>
+</section>
+<!-- - Original Melody
+    <section class="vis type1">
+        <audio controls controlsList="nodownload" preload="none">
+            <source src="melody_variation_samples/pop2-org-120.mp3">
+        </audio>
+        <midi-visualizer src="melody_variation_samples/pop2-org-120.mid" type="piano-roll" style="position: relative"> 
+        </midi-visualizer>
+    </section>
+
+- Ours
+    <section class="vis type2">
+        <audio id="audio-2-ours" controls controlsList="nodownload" preload="none">
+            <source src="melody_variation_samples/pop2-ours-120.mp3">
+        </audio>
+        <midi-visualizer src="melody_variation_samples/pop2-ours-120.mid" type="piano-roll" id="Vis-2" style="position: relative"> 
+        </midi-visualizer>
+    </section>
+
+- Baseline: DS-OBS
+    <section class="vis type3">
+        <audio id="audio-2-ds" controls controlsList="nodownload" preload="none">
+            <source src="melody_variation_samples/pop2-dsobs-120.mp3">
+        </audio>
+        <midi-visualizer src="melody_variation_samples/pop2-dsobs-120.mid" type="piano-roll" id="Vis-2" style="position: relative"> 
+        </midi-visualizer>
+    </section>
+
+- Baseline: DS-LS
+    <section class="vis type3">
+        <audio id="audio-2-ec2" controls controlsList="nodownload" preload="none">
+            <source src="melody_variation_samples/pop2-dsls-120.mp3">
+        </audio>
+        <midi-visualizer src="melody_variation_samples/pop2-dsls-120.mid" type="piano-roll" id="Vis-2" style="position: relative"> 
+        </midi-visualizer>
+    </section> 
+ -->
 <h3 id="melody-3-folk-genre">Melody 3 (Folk Genre)</h3>
-<ul>
-<li>
-<p>Original Melody</p>
-  <section class="vis type1">
-      <audio controls controlsList="nodownload" preload="none">
-          <source src="melody_variation_samples/folk1-org-120.mp3">
-      </audio>
-      <midi-visualizer src="melody_variation_samples/folk1-org-120.mid" type="piano-roll" style="position: relative"> 
-      </midi-visualizer>
-  </section>
-</li>
-<li>
-<p>Ours</p>
-  <section class="vis type2">
-      <audio id="audio-2-ours" controls controlsList="nodownload" preload="none">
-          <source src="melody_variation_samples/folk1-ours-120.mp3">
-      </audio>
-      <midi-visualizer src="melody_variation_samples/folk1-ours-120.mid" type="piano-roll" id="Vis-2" style="position: relative"> 
-      </midi-visualizer>
-  </section>
-</li>
-<li>
-<p>Baseline: DS-OBS</p>
-  <section class="vis type3">
-      <audio id="audio-2-ds" controls controlsList="nodownload" preload="none">
-          <source src="melody_variation_samples/folk1-dsobs-120.mp3">
-      </audio>
-      <midi-visualizer src="melody_variation_samples/folk1-dsobs-120.mid" type="piano-roll" id="Vis-2" style="position: relative"> 
-      </midi-visualizer>
-  </section>
-</li>
-<li>
-<p>Baseline: DS-LS</p>
-  <section class="vis type3">
-      <audio id="audio-2-ec2" controls controlsList="nodownload" preload="none">
-          <source src="melody_variation_samples/folk1-dsls-120.mp3">
-      </audio>
-      <midi-visualizer src="melody_variation_samples/folk1-dsls-120.mid" type="piano-roll" id="Vis-2" style="position: relative"> 
-      </midi-visualizer>
-  </section> 
-</li>
-</ul>
+<table>
+  <tr>
+    <th style="background-color: lavender; color: black; width: 50%">
+        Original Melody <button id="togglePianorollRedOrg_3" class="btn">Show Piano Roll</button>
+    </th>
+    <th style="background-color: lavender; color: black; width: 50%">
+        Ours <button id="togglePianorollRedOurs_3" class="btn">Show Piano Roll</button>
+    </th>
+  </tr>
+  <tr>
+    <td>
+        <audio controls controlsList="nodownload" preload="none">
+            <source src="melody_variation_samples/folk1-org-120.mp3">
+        </audio>
+    </td>
+    <td>
+        <audio id="audio-2-ours" controls controlsList="nodownload" preload="none">
+            <source src="melody_variation_samples/folk1-ours-120.mp3">
+        </audio>
+    </td>
+  </tr>
+  <tr>
+    <th style="background-color: lavender; color: black; width: 50%">
+        Baseline: DS-OBS <button id="togglePianorollRedDSOBS_3" class="btn">Show Piano Roll</button>
+    </th>
+    <th style="background-color: lavender; color: black; width: 50%">
+        Baseline: DS-LS  <button id="togglePianorollRedDSLS_3" class="btn">Show Piano Roll</button>
+    </th>
+  </tr>
+  <tr>
+    <td>
+        <audio id="audio-2-ds" controls controlsList="nodownload" preload="none">
+            <source src="melody_variation_samples/folk1-dsobs-120.mp3">
+        </audio>
+    </td>
+    <td>
+        <audio id="audio-2-ec2" controls controlsList="nodownload" preload="none">
+            <source src="melody_variation_samples/folk1-dsls-120.mp3">
+        </audio>
+    </td>
+  </tr>
+</table>
+<section id="unfoldPianorollRedOrg_3" class="vis type1" style="display: none">
+    <midi-visualizer src="melody_variation_samples/folk1-org-120.mid" type="piano-roll" style="position: relative"> 
+    </midi-visualizer>
+</section>
+<section id="unfoldPianorollRedOurs_3" class="vis type2" style="display: none">
+    <midi-visualizer src="melody_variation_samples/folk1-ours-120.mid" type="piano-roll" style="position: relative"> 
+    </midi-visualizer>
+</section>
+<section id="unfoldPianorollRedDSOBS_3" class="vis type3" style="display: none">
+    <midi-visualizer src="melody_variation_samples/folk1-dsobs-120.mid" type="piano-roll" style="position: relative"> 
+    </midi-visualizer>
+</section>
+<section id="unfoldPianorollRedDSLS_3" class="vis type3" style="display: none">
+    <midi-visualizer src="melody_variation_samples/folk1-dsls-120.mid" type="piano-roll" style="position: relative"> 
+    </midi-visualizer>
+</section>
+<!-- - Original Melody
+    <section class="vis type1">
+        <audio controls controlsList="nodownload" preload="none">
+            <source src="melody_variation_samples/folk1-org-120.mp3">
+        </audio>
+        <midi-visualizer src="melody_variation_samples/folk1-org-120.mid" type="piano-roll" style="position: relative"> 
+        </midi-visualizer>
+    </section>
+
+- Ours
+    <section class="vis type2">
+        <audio id="audio-2-ours" controls controlsList="nodownload" preload="none">
+            <source src="melody_variation_samples/folk1-ours-120.mp3">
+        </audio>
+        <midi-visualizer src="melody_variation_samples/folk1-ours-120.mid" type="piano-roll" id="Vis-2" style="position: relative"> 
+        </midi-visualizer>
+    </section>
+
+- Baseline: DS-OBS
+    <section class="vis type3">
+        <audio id="audio-2-ds" controls controlsList="nodownload" preload="none">
+            <source src="melody_variation_samples/folk1-dsobs-120.mp3">
+        </audio>
+        <midi-visualizer src="melody_variation_samples/folk1-dsobs-120.mid" type="piano-roll" id="Vis-2" style="position: relative"> 
+        </midi-visualizer>
+    </section>
+
+- Baseline: DS-LS
+    <section class="vis type3">
+        <audio id="audio-2-ec2" controls controlsList="nodownload" preload="none">
+            <source src="melody_variation_samples/folk1-dsls-120.mp3">
+        </audio>
+        <midi-visualizer src="melody_variation_samples/folk1-dsls-120.mid" type="piano-roll" id="Vis-2" style="position: relative"> 
+        </midi-visualizer>
+    </section>  -->
 <h3 id="melody-4-folk-genre">Melody 4 (Folk Genre)</h3>
-<ul>
-<li>
-<p>Original Melody</p>
-  <section class="vis type1">
-      <audio controls controlsList="nodownload" preload="none">
-          <source src="melody_variation_samples/folk2-org-120.mp3">
-      </audio>
-      <midi-visualizer src="melody_variation_samples/folk2-org-120.mid" type="piano-roll" style="position: relative"> 
-      </midi-visualizer>
-  </section>
-</li>
-<li>
-<p>Ours</p>
-  <section class="vis type2">
-      <audio id="audio-2-ours" controls controlsList="nodownload" preload="none">
-          <source src="melody_variation_samples/folk2-ours-120.mp3">
-      </audio>
-      <midi-visualizer src="melody_variation_samples/folk2-ours-120.mid" type="piano-roll" id="Vis-2" style="position: relative"> 
-      </midi-visualizer>
-  </section>
-</li>
-<li>
-<p>Baseline: DS-OBS</p>
-  <section class="vis type3">
-      <audio id="audio-2-ds" controls controlsList="nodownload" preload="none">
-          <source src="melody_variation_samples/folk2-dsobs-120.mp3">
-      </audio>
-      <midi-visualizer src="melody_variation_samples/folk2-dsobs-120.mid" type="piano-roll" id="Vis-2" style="position: relative"> 
-      </midi-visualizer>
-  </section>
-</li>
-<li>
-<p>Baseline: DS-LS</p>
-  <section class="vis type3">
-      <audio id="audio-2-ec2" controls controlsList="nodownload" preload="none">
-          <source src="melody_variation_samples/folk2-dsls-120.mp3">
-      </audio>
-      <midi-visualizer src="melody_variation_samples/folk2-dsls-120.mid" type="piano-roll" id="Vis-2" style="position: relative"> 
-      </midi-visualizer>
-  </section> 
-</li>
-</ul>
+<table>
+  <tr>
+    <th style="background-color: lavender; color: black; width: 50%">
+        Original Melody <button id="togglePianorollRedOrg_4" class="btn">Show Piano Roll</button>
+    </th>
+    <th style="background-color: lavender; color: black; width: 50%">
+        Ours <button id="togglePianorollRedOurs_4" class="btn">Show Piano Roll</button>
+    </th>
+  </tr>
+  <tr>
+    <td>
+        <audio controls controlsList="nodownload" preload="none">
+            <source src="melody_variation_samples/folk2-org-120.mp3">
+        </audio>
+    </td>
+    <td>
+        <audio id="audio-2-ours" controls controlsList="nodownload" preload="none">
+            <source src="melody_variation_samples/folk2-ours-120.mp3">
+        </audio>
+    </td>
+  </tr>
+  <tr>
+    <th style="background-color: lavender; color: black; width: 50%">
+        Baseline: DS-OBS <button id="togglePianorollRedDSOBS_4" class="btn">Show Piano Roll</button>
+    </th>
+    <th style="background-color: lavender; color: black; width: 50%">
+        Baseline: DS-LS  <button id="togglePianorollRedDSLS_4" class="btn">Show Piano Roll</button>
+    </th>
+  </tr>
+  <tr>
+    <td>
+        <audio id="audio-2-ds" controls controlsList="nodownload" preload="none">
+            <source src="melody_variation_samples/folk2-dsobs-120.mp3">
+        </audio>
+    </td>
+    <td>
+        <audio id="audio-2-ec2" controls controlsList="nodownload" preload="none">
+            <source src="melody_variation_samples/folk2-dsls-120.mp3">
+        </audio>
+    </td>
+  </tr>
+</table>
+<section id="unfoldPianorollRedOrg_4" class="vis type1" style="display: none">
+    <midi-visualizer src="melody_variation_samples/folk2-org-120.mid" type="piano-roll" style="position: relative"> 
+    </midi-visualizer>
+</section>
+<section id="unfoldPianorollRedOurs_4" class="vis type2" style="display: none">
+    <midi-visualizer src="melody_variation_samples/folk2-ours-120.mid" type="piano-roll" style="position: relative"> 
+    </midi-visualizer>
+</section>
+<section id="unfoldPianorollRedDSOBS_4" class="vis type3" style="display: none">
+    <midi-visualizer src="melody_variation_samples/folk2-dsobs-120.mid" type="piano-roll" style="position: relative"> 
+    </midi-visualizer>
+</section>
+<section id="unfoldPianorollRedDSLS_4" class="vis type3" style="display: none">
+    <midi-visualizer src="melody_variation_samples/folk2-dsls-120.mid" type="piano-roll" style="position: relative"> 
+    </midi-visualizer>
+</section>
+<!-- - Original Melody
+    <section class="vis type1">
+        <audio controls controlsList="nodownload" preload="none">
+            <source src="melody_variation_samples/folk2-org-120.mp3">
+        </audio>
+        <midi-visualizer src="melody_variation_samples/folk2-org-120.mid" type="piano-roll" style="position: relative"> 
+        </midi-visualizer>
+    </section>
+
+- Ours
+    <section class="vis type2">
+        <audio id="audio-2-ours" controls controlsList="nodownload" preload="none">
+            <source src="melody_variation_samples/folk2-ours-120.mp3">
+        </audio>
+        <midi-visualizer src="melody_variation_samples/folk2-ours-120.mid" type="piano-roll" id="Vis-2" style="position: relative"> 
+        </midi-visualizer>
+    </section>
+
+- Baseline: DS-OBS
+    <section class="vis type3">
+        <audio id="audio-2-ds" controls controlsList="nodownload" preload="none">
+            <source src="melody_variation_samples/folk2-dsobs-120.mp3">
+        </audio>
+        <midi-visualizer src="melody_variation_samples/folk2-dsobs-120.mid" type="piano-roll" id="Vis-2" style="position: relative"> 
+        </midi-visualizer>
+    </section>
+
+- Baseline: DS-LS
+    <section class="vis type3">
+        <audio id="audio-2-ec2" controls controlsList="nodownload" preload="none">
+            <source src="melody_variation_samples/folk2-dsls-120.mp3">
+        </audio>
+        <midi-visualizer src="melody_variation_samples/folk2-dsls-120.mid" type="piano-roll" id="Vis-2" style="position: relative"> 
+        </midi-visualizer>
+    </section>  -->
 <h3 id="melody-5-classical-genre">Melody 5 (Classical Genre)</h3>
-<ul>
-<li>
-<p>Original Melody</p>
-  <section class="vis type1">
-      <audio controls controlsList="nodownload" preload="none">
-          <source src="melody_variation_samples/classical1-org-120.mp3">
-      </audio>
-      <midi-visualizer src="melody_variation_samples/classical1-org-120.mid" type="piano-roll" style="position: relative"> 
-      </midi-visualizer>
-  </section>
-</li>
-<li>
-<p>Ours</p>
-  <section class="vis type2">
-      <audio id="audio-2-ours" controls controlsList="nodownload" preload="none">
-          <source src="melody_variation_samples/classical1-ours-120.mp3">
-      </audio>
-      <midi-visualizer src="melody_variation_samples/classical1-ours-120.mid" type="piano-roll" id="Vis-2" style="position: relative"> 
-      </midi-visualizer>
-  </section>
-</li>
-<li>
-<p>Baseline: DS-OBS</p>
-  <section class="vis type3">
-      <audio id="audio-2-ds" controls controlsList="nodownload" preload="none">
-          <source src="melody_variation_samples/classical1-dsobs-120.mp3">
-      </audio>
-      <midi-visualizer src="melody_variation_samples/classical1-dsobs-120.mid" type="piano-roll" id="Vis-2" style="position: relative"> 
-      </midi-visualizer>
-  </section>
-</li>
-<li>
-<p>Baseline: DS-LS</p>
-  <section class="vis type3">
-      <audio id="audio-2-ec2" controls controlsList="nodownload" preload="none">
-          <source src="melody_variation_samples/classical1-dsls-120.mp3">
-      </audio>
-      <midi-visualizer src="melody_variation_samples/classical1-dsls-120.mid" type="piano-roll" id="Vis-2" style="position: relative"> 
-      </midi-visualizer>
-  </section> 
-</li>
-</ul>
+<table>
+  <tr>
+    <th style="background-color: lavender; color: black; width: 50%">
+        Original Melody <button id="togglePianorollRedOrg_5" class="btn">Show Piano Roll</button>
+    </th>
+    <th style="background-color: lavender; color: black; width: 50%">
+        Ours <button id="togglePianorollRedOurs_5" class="btn">Show Piano Roll</button>
+    </th>
+  </tr>
+  <tr>
+    <td>
+        <audio controls controlsList="nodownload" preload="none">
+            <source src="melody_variation_samples/classical1-org-120.mp3">
+        </audio>
+    </td>
+    <td>
+        <audio id="audio-2-ours" controls controlsList="nodownload" preload="none">
+            <source src="melody_variation_samples/classical1-ours-120.mp3">
+        </audio>
+    </td>
+  </tr>
+  <tr>
+    <th style="background-color: lavender; color: black; width: 50%">
+        Baseline: DS-OBS <button id="togglePianorollRedDSOBS_5" class="btn">Show Piano Roll</button>
+    </th>
+    <th style="background-color: lavender; color: black; width: 50%">
+        Baseline: DS-LS  <button id="togglePianorollRedDSLS_5" class="btn">Show Piano Roll</button>
+    </th>
+  </tr>
+  <tr>
+    <td>
+        <audio id="audio-2-ds" controls controlsList="nodownload" preload="none">
+            <source src="melody_variation_samples/classical1-dsobs-120.mp3">
+        </audio>
+    </td>
+    <td>
+        <audio id="audio-2-ec2" controls controlsList="nodownload" preload="none">
+            <source src="melody_variation_samples/classical1-dsls-120.mp3">
+        </audio>
+    </td>
+  </tr>
+</table>
+<section id="unfoldPianorollRedOrg_5" class="vis type1" style="display: none">
+    <midi-visualizer src="melody_variation_samples/classical1-org-120.mid" type="piano-roll" style="position: relative"> 
+    </midi-visualizer>
+</section>
+<section id="unfoldPianorollRedOurs_5" class="vis type2" style="display: none">
+    <midi-visualizer src="melody_variation_samples/classical1-ours-120.mid" type="piano-roll" style="position: relative"> 
+    </midi-visualizer>
+</section>
+<section id="unfoldPianorollRedDSOBS_5" class="vis type3" style="display: none">
+    <midi-visualizer src="melody_variation_samples/classical1-dsobs-120.mid" type="piano-roll" style="position: relative"> 
+    </midi-visualizer>
+</section>
+<section id="unfoldPianorollRedDSLS_5" class="vis type3" style="display: none">
+    <midi-visualizer src="melody_variation_samples/classical1-dsls-120.mid" type="piano-roll" style="position: relative"> 
+    </midi-visualizer>
+</section>
+<!-- - Original Melody
+    <section class="vis type1">
+        <audio controls controlsList="nodownload" preload="none">
+            <source src="melody_variation_samples/classical1-org-120.mp3">
+        </audio>
+        <midi-visualizer src="melody_variation_samples/classical1-org-120.mid" type="piano-roll" style="position: relative"> 
+        </midi-visualizer>
+    </section>
+
+- Ours
+    <section class="vis type2">
+        <audio id="audio-2-ours" controls controlsList="nodownload" preload="none">
+            <source src="melody_variation_samples/classical1-ours-120.mp3">
+        </audio>
+        <midi-visualizer src="melody_variation_samples/classical1-ours-120.mid" type="piano-roll" id="Vis-2" style="position: relative"> 
+        </midi-visualizer>
+    </section>
+
+- Baseline: DS-OBS
+    <section class="vis type3">
+        <audio id="audio-2-ds" controls controlsList="nodownload" preload="none">
+            <source src="melody_variation_samples/classical1-dsobs-120.mp3">
+        </audio>
+        <midi-visualizer src="melody_variation_samples/classical1-dsobs-120.mid" type="piano-roll" id="Vis-2" style="position: relative"> 
+        </midi-visualizer>
+    </section>
+
+- Baseline: DS-LS
+    <section class="vis type3">
+        <audio id="audio-2-ec2" controls controlsList="nodownload" preload="none">
+            <source src="melody_variation_samples/classical1-dsls-120.mp3">
+        </audio>
+        <midi-visualizer src="melody_variation_samples/classical1-dsls-120.mid" type="piano-roll" id="Vis-2" style="position: relative"> 
+        </midi-visualizer>
+    </section>  -->
 <h3 id="melody-6-classical-genre">Melody 6 (Classical Genre)</h3>
-<ul>
-<li>
-<p>Original Melody</p>
-  <section class="vis type1">
-      <audio controls controlsList="nodownload" preload="none">
-          <source src="melody_variation_samples/classical2-org-120.mp3">
-      </audio>
-      <midi-visualizer src="melody_variation_samples/classical2-org-120.mid" type="piano-roll" style="position: relative"> 
-      </midi-visualizer>
-  </section>
-</li>
-<li>
-<p>Ours + Diff.</p>
-  <section class="vis type2">
-      <audio id="audio-2-ours" controls controlsList="nodownload" preload="none">
-          <source src="melody_variation_samples/classical2-ours-120.mp3">
-      </audio>
-      <midi-visualizer src="melody_variation_samples/classical2-ours-120.mid" type="piano-roll" id="Vis-2" style="position: relative"> 
-      </midi-visualizer>
-  </section>
-</li>
-<li>
-<p>Baseline: DS-OBS + Diff.</p>
-  <section class="vis type3">
-      <audio id="audio-2-ds" controls controlsList="nodownload" preload="none">
-          <source src="melody_variation_samples/classical2-dsobs-120.mp3">
-      </audio>
-      <midi-visualizer src="melody_variation_samples/classical2-dsobs-120.mid" type="piano-roll" id="Vis-2" style="position: relative"> 
-      </midi-visualizer>
-  </section>
-</li>
-<li>
-<p>Baseline: EC2-VAE Sampling</p>
-  <section class="vis type3">
-      <audio id="audio-2-ec2" controls controlsList="nodownload" preload="none">
-          <source src="melody_variation_samples/classical2-dsls-120.mp3">
-      </audio>
-      <midi-visualizer src="melody_variation_samples/classical2-dsls-120.mid" type="piano-roll" id="Vis-2" style="position: relative"> 
-      </midi-visualizer>
-  </section> 
-</li>
-</ul>
+<table>
+  <tr>
+    <th style="background-color: lavender; color: black; width: 50%">
+        Original Melody <button id="togglePianorollRedOrg_6" class="btn">Show Piano Roll</button>
+    </th>
+    <th style="background-color: lavender; color: black; width: 50%">
+        Ours <button id="togglePianorollRedOurs_6" class="btn">Show Piano Roll</button>
+    </th>
+  </tr>
+  <tr>
+    <td>
+        <audio controls controlsList="nodownload" preload="none">
+            <source src="melody_variation_samples/classical2-org-120.mp3">
+        </audio>
+    </td>
+    <td>
+        <audio id="audio-2-ours" controls controlsList="nodownload" preload="none">
+            <source src="melody_variation_samples/classical2-ours-120.mp3">
+        </audio>
+    </td>
+  </tr>
+  <tr>
+    <th style="background-color: lavender; color: black; width: 50%">
+        Baseline: DS-OBS <button id="togglePianorollRedDSOBS_6" class="btn">Show Piano Roll</button>
+    </th>
+    <th style="background-color: lavender; color: black; width: 50%">
+        Baseline: DS-LS  <button id="togglePianorollRedDSLS_6" class="btn">Show Piano Roll</button>
+    </th>
+  </tr>
+  <tr>
+    <td>
+        <audio id="audio-2-ds" controls controlsList="nodownload" preload="none">
+            <source src="melody_variation_samples/classical2-dsobs-120.mp3">
+        </audio>
+    </td>
+    <td>
+        <audio id="audio-2-ec2" controls controlsList="nodownload" preload="none">
+            <source src="melody_variation_samples/classical2-dsls-120.mp3">
+        </audio>
+    </td>
+  </tr>
+</table>
+<section id="unfoldPianorollRedOrg_6" class="vis type1" style="display: none">
+    <midi-visualizer src="melody_variation_samples/classical2-org-120.mid" type="piano-roll" style="position: relative"> 
+    </midi-visualizer>
+</section>
+<section id="unfoldPianorollRedOurs_6" class="vis type2" style="display: none">
+    <midi-visualizer src="melody_variation_samples/classical2-ours-120.mid" type="piano-roll" style="position: relative"> 
+    </midi-visualizer>
+</section>
+<section id="unfoldPianorollRedDSOBS_6" class="vis type3" style="display: none">
+    <midi-visualizer src="melody_variation_samples/classical2-dsobs-120.mid" type="piano-roll" style="position: relative"> 
+    </midi-visualizer>
+</section>
+<section id="unfoldPianorollRedDSLS_6" class="vis type3" style="display: none">
+    <midi-visualizer src="melody_variation_samples/classical2-dsls-120.mid" type="piano-roll" style="position: relative"> 
+    </midi-visualizer>
+</section>
+<!-- - Original Melody
+    <section class="vis type1">
+        <audio controls controlsList="nodownload" preload="none">
+            <source src="melody_variation_samples/classical2-org-120.mp3">
+        </audio>
+        <midi-visualizer src="melody_variation_samples/classical2-org-120.mid" type="piano-roll" style="position: relative"> 
+        </midi-visualizer>
+    </section>
+
+- Ours + Diff.
+    <section class="vis type2">
+        <audio id="audio-2-ours" controls controlsList="nodownload" preload="none">
+            <source src="melody_variation_samples/classical2-ours-120.mp3">
+        </audio>
+        <midi-visualizer src="melody_variation_samples/classical2-ours-120.mid" type="piano-roll" id="Vis-2" style="position: relative"> 
+        </midi-visualizer>
+    </section>
+
+- Baseline: DS-OBS + Diff.
+    <section class="vis type3">
+        <audio id="audio-2-ds" controls controlsList="nodownload" preload="none">
+            <source src="melody_variation_samples/classical2-dsobs-120.mp3">
+        </audio>
+        <midi-visualizer src="melody_variation_samples/classical2-dsobs-120.mid" type="piano-roll" id="Vis-2" style="position: relative"> 
+        </midi-visualizer>
+    </section>
+
+- Baseline: EC2-VAE Sampling
+    <section class="vis type3">
+        <audio id="audio-2-ec2" controls controlsList="nodownload" preload="none">
+            <source src="melody_variation_samples/classical2-dsls-120.mp3">
+        </audio>
+        <midi-visualizer src="melody_variation_samples/classical2-dsls-120.mid" type="piano-roll" id="Vis-2" style="position: relative"> 
+        </midi-visualizer>
+    </section> 
+
+
+
+
+ -->
 <h2 id="melody-variation-demo">Melody Variation Demo</h2>
 <p><a id="variation"></a></p>
 <p>To evaluate the effectiveness of the melody reduction for downstream music generation tasks, we use the melody reduction as an intermediate feature for music variation generation. Here we show some melody variation samples comparing the generation model trained with our algorithm and two baselines.</p>
 <h3 id="example-1">Example 1</h3>
-<ul>
-<li>
-<p>Human Composition</p>
-  <section class="vis type1">
-      <audio id="audio-2-gt" controls controlsList="nodownload" preload="none">
-          <source src="melody_variation_samples/chorus2-gt-120.mp3">
-      </audio>
-      <midi-visualizer src="melody_variation_samples/chorus2-gt.mid" type="piano-roll" id="Vis-2" style="position: relative"> 
-      </midi-visualizer>
-  </section>
-</li>
-<li>
-<p>Ours + Diff.</p>
-  <section class="vis type2">
-      <audio id="audio-2-ours" controls controlsList="nodownload" preload="none">
-          <source src="melody_variation_samples/chorus2-ours-120.mp3">
-      </audio>
-      <midi-visualizer src="melody_variation_samples/chorus2-ours.mid" type="piano-roll" id="Vis-2" style="position: relative"> 
-      </midi-visualizer>
-  </section>
-</li>
-<li>
-<p>Baseline: DS-OBS + Diff.</p>
-  <section class="vis type3">
-      <audio id="audio-2-ds" controls controlsList="nodownload" preload="none">
-          <source src="melody_variation_samples/chorus2-ds-120.mp3">
-      </audio>
-      <midi-visualizer src="melody_variation_samples/chorus2-ds.mid" type="piano-roll" id="Vis-2" style="position: relative"> 
-      </midi-visualizer>
-  </section>
-</li>
-<li>
-<p>Baseline: EC2-VAE Sampling</p>
-  <section class="vis type3">
-      <audio id="audio-2-ec2" controls controlsList="nodownload" preload="none">
-          <source src="melody_variation_samples/chorus2-ec2-120.mp3">
-      </audio>
-      <midi-visualizer src="melody_variation_samples/chorus2-ec2.mid" type="piano-roll" id="Vis-2" style="position: relative"> 
-      </midi-visualizer>
-  </section> 
-</li>
-</ul>
+<table>
+  <tr>
+    <th style="background-color: cornsilk; color: black; width: 50%">
+        Original Melody <button id="togglePianorollVarOrg_1" class="btn">Show Piano Roll</button>
+    </th>
+    <th style="background-color: cornsilk; color: black; width: 50%">
+        Ours <button id="togglePianorollVarOurs_1" class="btn">Show Piano Roll</button>
+    </th>
+  </tr>
+  <tr>
+    <td>
+        <audio controls controlsList="nodownload" preload="none">
+            <source src="melody_variation_samples/chorus2-gt-120.mp3">
+        </audio>
+    </td>
+    <td>
+        <audio id="audio-2-ours" controls controlsList="nodownload" preload="none">
+            <source src="melody_variation_samples/chorus2-ours-120.mp3">
+        </audio>
+    </td>
+  </tr>
+  <tr>
+    <th style="background-color: cornsilk; color: black; width: 50%">
+        Baseline: DS-OBS <button id="togglePianorollVarDSOBS_1" class="btn">Show Piano Roll</button>
+    </th>
+    <th style="background-color: cornsilk; color: black; width: 50%">
+        Baseline: DS-LS  <button id="togglePianorollVarEC2VAE_1" class="btn">Show Piano Roll</button>
+    </th>
+  </tr>
+  <tr>
+    <td>
+        <audio id="audio-2-ds" controls controlsList="nodownload" preload="none">
+            <source src="melody_variation_samples/chorus2-ds-120.mp3">
+        </audio>
+    </td>
+    <td>
+        <audio id="audio-2-ec2" controls controlsList="nodownload" preload="none">
+            <source src="melody_variation_samples/chorus2-ec2-120.mp3">
+        </audio>
+    </td>
+  </tr>
+</table>
+<section id="unfoldPianorollVarOrg_1" class="vis type1" style="display: none">
+    <midi-visualizer src="melody_variation_samples/chorus2-gt.mid" type="piano-roll" style="position: relative"> 
+    </midi-visualizer>
+</section>
+<section id="unfoldPianorollVarOurs_1" class="vis type2" style="display: none">
+    <midi-visualizer src="melody_variation_samples/chorus2-ours.mid" type="piano-roll" style="position: relative"> 
+    </midi-visualizer>
+</section>
+<section id="unfoldPianorollVarDSOBS_1" class="vis type3" style="display: none">
+    <midi-visualizer src="melody_variation_samples/chorus2-ds.mid" type="piano-roll" style="position: relative"> 
+    </midi-visualizer>
+</section>
+<section id="unfoldPianorollVarEC2VAE_1" class="vis type3" style="display: none">
+    <midi-visualizer src="melody_variation_samples/chorus2-ec2.mid" type="piano-roll" style="position: relative"> 
+    </midi-visualizer>
+</section>
+<!-- - Human Composition
+    <section class="vis type1">
+        <audio id="audio-2-gt" controls controlsList="nodownload" preload="none">
+            <source src="melody_variation_samples/chorus2-gt-120.mp3">
+        </audio>
+        <midi-visualizer src="melody_variation_samples/chorus2-gt.mid" type="piano-roll" id="Vis-2" style="position: relative"> 
+        </midi-visualizer>
+    </section>
+
+- Ours + Diff.
+    <section class="vis type2">
+        <audio id="audio-2-ours" controls controlsList="nodownload" preload="none">
+            <source src="melody_variation_samples/chorus2-ours-120.mp3">
+        </audio>
+        <midi-visualizer src="melody_variation_samples/chorus2-ours.mid" type="piano-roll" id="Vis-2" style="position: relative"> 
+        </midi-visualizer>
+    </section>
+
+- Baseline: DS-OBS + Diff.
+    <section class="vis type3">
+        <audio id="audio-2-ds" controls controlsList="nodownload" preload="none">
+            <source src="melody_variation_samples/chorus2-ds-120.mp3">
+        </audio>
+        <midi-visualizer src="melody_variation_samples/chorus2-ds.mid" type="piano-roll" id="Vis-2" style="position: relative"> 
+        </midi-visualizer>
+    </section>
+
+- Baseline: EC2-VAE Sampling
+    <section class="vis type3">
+        <audio id="audio-2-ec2" controls controlsList="nodownload" preload="none">
+            <source src="melody_variation_samples/chorus2-ec2-120.mp3">
+        </audio>
+        <midi-visualizer src="melody_variation_samples/chorus2-ec2.mid" type="piano-roll" id="Vis-2" style="position: relative"> 
+        </midi-visualizer>
+    </section>  -->
 <h3 id="example-2">Example 2</h3>
-<ul>
-<li>
-<p>Human Composition</p>
-  <section class="vis type1">
-      <audio id="audio-3-gt" controls controlsList="nodownload" preload="none">
-          <source src="melody_variation_samples/verse1-gt-120.mp3">
-      </audio>
-      <midi-visualizer src="melody_variation_samples/verse1-gt.mid" type="piano-roll" id="Vis-2" style="position: relative"> 
-      </midi-visualizer>
-  </section>
-</li>
-<li>
-<p>Ours + Diff.</p>
-  <section class="vis type2">
-      <audio id="audio-2-ours" controls controlsList="nodownload" preload="none">
-          <source src="melody_variation_samples/verse1-ours-120.mp3">
-      </audio>
-      <midi-visualizer src="melody_variation_samples/verse1-ours.mid" type="piano-roll" id="Vis-2" style="position: relative"> 
-      </midi-visualizer>
-  </section>
-</li>
-<li>
-<p>Baseline: DS-OBS + Diff.</p>
-  <section class="vis type3">
-      <audio id="audio-2-ds" controls controlsList="nodownload" preload="none">
-          <source src="melody_variation_samples/verse1-ds-120.mp3">
-      </audio>
-      <midi-visualizer src="melody_variation_samples/verse1-ds.mid" type="piano-roll" id="Vis-2" style="position: relative"> 
-      </midi-visualizer>
-  </section>
-</li>
-<li>
-<p>Baseline: EC2-VAE Sampling</p>
-  <section class="vis type3">
-      <audio id="audio-2-ec2" controls controlsList="nodownload" preload="none">
-          <source src="melody_variation_samples/verse1-ec2-120.mp3">
-      </audio>
-      <midi-visualizer src="melody_variation_samples/verse1-ec2.mid" type="piano-roll" id="Vis-2" style="position: relative"> 
-      </midi-visualizer>
-  </section> 
-</li>
-</ul>
-<script>
-    prs = document.querySelectorAll("midi-visualizer");
-    for (let i = 0; i < prs.length; i++) {
-        prs[i].config = {
-            noteHeight: 2,
-            pixelsPerTimeStep: 55,
-        };
-    };
-</script>
+<table>
+  <tr>
+    <th style="background-color: cornsilk; color: black; width: 50%">
+        Original Melody <button id="togglePianorollVarOrg_2" class="btn">Show Piano Roll</button>
+    </th>
+    <th style="background-color: cornsilk; color: black; width: 50%">
+        Ours <button id="togglePianorollVarOurs_2" class="btn">Show Piano Roll</button>
+    </th>
+  </tr>
+  <tr>
+    <td>
+        <audio controls controlsList="nodownload" preload="none">
+            <source src="melody_variation_samples/verse1-gt-120.mp3">
+        </audio>
+    </td>
+    <td>
+        <audio id="audio-2-ours" controls controlsList="nodownload" preload="none">
+            <source src="melody_variation_samples/verse1-ours-120.mp3">
+        </audio>
+    </td>
+  </tr>
+  <tr>
+    <th style="background-color: cornsilk; color: black; width: 50%">
+        Baseline: DS-OBS <button id="togglePianorollVarDSOBS_2" class="btn">Show Piano Roll</button>
+    </th>
+    <th style="background-color: cornsilk; color: black; width: 50%">
+        Baseline: DS-LS  <button id="togglePianorollVarEC2VAE_2" class="btn">Show Piano Roll</button>
+    </th>
+  </tr>
+  <tr>
+    <td>
+        <audio id="audio-2-ds" controls controlsList="nodownload" preload="none">
+            <source src="melody_variation_samples/verse1-ds-120.mp3">
+        </audio>
+    </td>
+    <td>
+        <audio id="audio-2-ec2" controls controlsList="nodownload" preload="none">
+            <source src="melody_variation_samples/verse1-ec2-120.mp3">
+        </audio>
+    </td>
+  </tr>
+</table>
+<section id="unfoldPianorollVarOrg_2" class="vis type1" style="display: none">
+    <midi-visualizer src="melody_variation_samples/verse1-gt.mid" type="piano-roll" style="position: relative"> 
+    </midi-visualizer>
+</section>
+<section id="unfoldPianorollVarOurs_2" class="vis type2" style="display: none">
+    <midi-visualizer src="melody_variation_samples/verse1-ours.mid" type="piano-roll" style="position: relative"> 
+    </midi-visualizer>
+</section>
+<section id="unfoldPianorollVarDSOBS_2" class="vis type3" style="display: none">
+    <midi-visualizer src="melody_variation_samples/verse1-ds.mid" type="piano-roll" style="position: relative"> 
+    </midi-visualizer>
+</section>
+<section id="unfoldPianorollVarEC2VAE_2" class="vis type3" style="display: none">
+    <midi-visualizer src="melody_variation_samples/verse1-ec2.mid" type="piano-roll" style="position: relative"> 
+    </midi-visualizer>
+</section>
+<script src="js/midi-vis.js"></script>
+<script src="js/button.js"></script>
 </div>
   
   
